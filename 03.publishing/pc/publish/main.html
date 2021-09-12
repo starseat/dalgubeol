@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="desc">
+    <title>달구벌명가</title>
+    <link rel="canonical" href="https://url">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="title">
+    <meta property="og:description" content="deesc">
+    <meta property="og:url" content="url">
+    <script type="text/javascript" src="../../lib/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="../../lib/slick-1.6.0.min.js"></script>
+    <script type="text/javascript" src="ui.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../css/slick.css" media="all" />
+    <link rel="stylesheet" type="text/css" href="../../css/common_m.css" media="all" />
+</head>
+<body>
+<div class="wrap main">
+    <!-- GNB -->
+    <div class="common_gnb_w"><!-- lnbtype_main / sticky / 모바일:gnb_open -->
+
+        <div class="common_lnb_w">
+            <h1 class="gnb_big_logo"><a href="#none" class="gnb_logo"><img src="../img/gnb_logo.png" alt="달구벌명가식품"></a></h1>
+            <div class="common_lnb_inner">
+                <ul class="common_lnb_list">
+                    <li class="slnb_inner">
+                        <a href="#none" class="slnb_link">
+                            <span class="slnb_txt_box">
+                                <span class="slnb_txt">
+                                    회사소개
+                                </span>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="slnb_inner">
+                        <a href="#none" class="slnb_link">
+                            <span class="slnb_txt_box">
+                                <span class="slnb_txt">
+                                    사업소개
+                                </span>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="slnb_inner current">
+                        <a href="#none" class="slnb_link">
+                            <span class="slnb_txt_box">
+                                <span class="slnb_txt">
+                                     제휴안내
+                                </span>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="slnb_inner">
+                        <a href="#none" class="slnb_link">
+                            <span class="slnb_txt_box">
+                                <span class="slnb_txt">
+                                    고객센터
+                                </span>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- 콘텐츠 -->
+    <div class="container">
+        <!-- 이미지 슬라이드 -->
+        <div class="section_visual_w">
+            <div class="main_visual_list">
+                <div class="main_vl_cont" >
+                    <div class="bg" style="background-image:url('../img/main_visual01.jpg');"></div>
+                    <div class="mvl_text_w">
+                        <div class="mvl_text">
+                            <img src="../img/main_visual01_text.png" alt="바른먹거리와 정직한 유통 달구벌명가 식품">
+                        </div>
+                    </div>
+                </div>
+                <div class="main_vl_cont">
+                    <div class="bg" style="background-image:url('../img/main_visual02.jpg');"></div>
+                    <div class="mvl_text_w">
+                        <div class="mvl_text">
+                            <img src="../img/main_visual01_text.png" alt="축산물유통의 선두주자 달구벌명가 식품">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="main_quick_menu_w">
+            <div class="mquick_menu_inner">
+                <a href="#none" class="mquick_link01">
+                    <span class="mquick_text">오시는길</span>
+                    <span class="more_text">+더보기</span>
+                </a>
+                <a href="#none" class="mquick_link02">
+                    <span class="mquick_text">브랜드</span>
+                    <span class="more_text">+더보기</span>
+                </a>
+                <a href="#none" class="mquick_link03">
+                    <span class="mquick_text">제품안내</span>
+                    <span class="more_text">+더보기</span>
+                </a>
+                <a href="#none" class="mquick_link04">
+                    <span class="mquick_text">고객센터</span>
+                    <span class="more_text">+더보기</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 푸터 -->
+    <div class="footer">
+       <div class="footer_inner">
+           <a href="#none" class="footer_logo"><img src="../img/footer_logo.png" alt="달구벌식품명가"></a>
+           <div class="footer_text_list">
+               <span class="ftl_cont">사업자등록번호 : 470-81-01279</span>
+               <span class="ftl_cont">대표 : 김성화<br/></span>
+               <span class="ftl_cont">TEL : 053-358-6611~2</span>
+               <span class="ftl_cont">FAX : 053-358-6622</span>
+           </div>
+           <div class="footer_text_list2">
+               <span class="ftl_cont">경상북도 경산시 남천면 협석 2길 3 (주식회사 달구벌명가식품)<br/></span>
+               <span class="ftl_cont">COPYRIGHTS 2015 © 달구벌명가식품 ALLRESERVED</span>
+           </div>
+       </div>
+    </div>
+
+</div>
+<!--#front-->
+<script type="text/javascript">
+    $(document).ready(function(){
+        mainvisualSlick();
+
+        var mql = window.matchMedia("screen and (max-width: 720px)");
+        if (mql.matches) {
+            console.log("화면의 너비가 720px 보다 작습니다.");
+        } else {
+            console.log("화면의 너비가 720px 보다 큽니다.");
+        }
+    });
+
+    $(window).resize(function() {   });
+</script>
+</body>
+</html>

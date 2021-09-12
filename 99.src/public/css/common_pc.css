@@ -293,6 +293,19 @@ input,button,select {outline:none; border-radius:0;}
 .detail_view_w {padding:42px 0 90px;}
 .detail_image_w {margin-top:43px; text-align:center;}
 .detail_image_w img {display:inline-block; max-width:100%;}
+
+
+/* 서브 : 갤러리 */
+.gallery_list_w {max-width:1042px; margin:0 auto;}
+.gallery_list_w {}
+.gallery_list {display:flex; justify-content:space-between; flex-wrap:wrap;}
+.gallery_inner {width:25%;}
+.gallery_list_w .mb_info_w {display:block; background-color:#F9F9F9;}
+.gallery_list_w .module_box_w_type1 .mb_info_w,
+.gallery_list_w .mb_image_w:after{box-shadow:none;}
+
+
+
 /*  --------------- 태블릿 제어  --------------- */
 @media screen and (max-width:1080px) {
 
