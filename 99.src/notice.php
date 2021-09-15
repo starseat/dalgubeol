@@ -37,14 +37,52 @@
         </div>
     </div>
 
+<?php
+
+$sql = "SELECT bo_notice FROM g5_board WHERE bo_table='notice'";
+$result = mysqli_query($conn, $sql) or exit(mysqli_error($conn));
+$notice_id_result = mysqli_fetch_array($result);
+$result->free();
+$notice_ids = join(',', $notice_id_result);
+
+$sql = "SELECT wr_id, wr_subject, wr_name, wr_hit, wr_datetime FROM g5_write_notice WHERE wr_id IN (" . $notice_ids . ")";
+$notice_check_result = mysqli_query($conn, $sql) or exit(mysqli_error($conn));
+
+// 게시글 수
+$item_row_count = 10;
+// 하단 페이지 block 수 (1, 2, 3, 4, ...  이런거)
+$page_block_count = 10;
+
+$sql = "SELECT COUNT(*) FROM g5_write_notice";
+
+$result = mysqli_query($conn, $sql) or exit(mysqli_error($conn));
+$total_count = mysqli_fetch_array($result);
+$total_count = intval($total_count[0]);
+$result->free();
+
+// 현재 페이지
+$page = isset($_GET['page']) ? trim($_GET['page']) : 1;
+$paging_info = getPagingInfo($page, $total_count, $item_row_count, $page_block_count);
+
+$sql = "
+    SELECT notice_page.* FROM (
+        SELECT @rownum:=@rownum-1 as num, notice.wr_id, notice.wr_subject, notice.wr_name, notice.wr_hit, notice.wr_datetime 
+        FROM g5_write_notice notice, (SELECT @rownum:=(select count(*) FROM g5_write_notice WHERE wr_id NOT IN (" . $notice_ids . ") )+1) rownum_temp 
+        WHERE notice.wr_id NOT IN (" . $notice_ids . ") 
+        ORDER BY notice.wr_id DESC
+    ) notice_page LIMIT " . $paging_info['page_db'] . ", $item_row_count
+";
+
+$result = mysqli_query($conn, $sql) or exit(mysqli_error($conn));
+?>
+
     <!-- 콘텐츠 -->
     <div class="container_inner">
         <h3 class="blind">공지사항</h3>
         <div class="content_section">
             <div class="board_list_w">
                 <strong class="board_search">
-                    totla
-                    <span>1건</span>
+                    total <span><?= $total_count; ?></span> 건 / <?= $page; ?> 페이지
                 </strong>
                 <div class="board_table_w">
                     <table>
@@ -65,55 +103,62 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="notice">
+                            <?php while ($row = $notice_check_result->fetch_array()) { ?>
+                            <tr class="notice" onclick="alert(<?= $row['wr_id']; ?>);">
                                 <td>공지</td>
-                                <td>현대홈쇼핑 방송(2018년 7월 10일 pm11:50)</td>
-                                <td>달구벌명가식품</td>
-                                <td>07.04</td>
-                                <td>482</td>
+                                <td style="text-align: left;"><?= $row['wr_subject']; ?></td>
+                                <td><?= $row['wr_name']; ?></td>
+                                <td><?= substr($row['wr_datetime'], 5, 5); ?></td>
+                                <td><?= $row['wr_hit']; ?></td>
+                            </tr>    
+                            <?php } ?>
+                            
+                            <?php while ($row = $result->fetch_array()) { ?>
+                            <tr onclick="alert(<?= $row['wr_id']; ?>);">
+                                <td><?= $row['num']; ?></td>
+                                <td style="text-align: left;"><?= $row['wr_subject']; ?></td>
+                                <td><?= $row['wr_name']; ?></td>
+                                <td><?= substr($row['wr_datetime'], 5, 5); ?></td>
+                                <td><?= $row['wr_hit']; ?></td>
                             </tr>
-                            <tr>
-                                <td>5</td>
-                                <td>홈쇼핑 방송 종료 전 완판! 달구벌 막창이 다시 방송됩니다.</td>
-                                <td>달구벌명가식품</td>
-                                <td>07.04</td>
-                                <td>482</td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>게시판 타이틀 영역 게시판 타이틀 영역 게시판 타이틀 영역 게시판 타이틀 영역 게시판 타이틀 영역 </td>
-                                <td>달구벌명가식품</td>
-                                <td>07.04</td>
-                                <td>482</td>
-                            </tr>
+                            <?php } ?>
                         </tbody>
                     </table>
                 </div>
+
                 <div class="board_paging_w">
                     <ul class="board_paging_list">
-                        <li class="bpl_inner paging_current">
-                            <a href="#none" class="bpl_cont">1</a>
-                        </li>
-                        <li class="bpl_inner">
-                            <a href="#none" class="bpl_cont">2</a>
-                        </li>
-                        <li class="bpl_inner">
-                            <a href="#none" class="bpl_cont">3</a>
-                        </li>
-                        <li class="bpl_inner">
-                            <a href="#none" class="bpl_cont">4</a>
-                        </li>
+                        <?php if ($paging_info['page_prev'] > 0) { ?>
+                        <li class="bpl_inner"><a href="./notice.php?page=<?= $paging_info['page_prev'] ?>" class="bpl_cont">&lt;</a></li>
+                        <?php } ?>
 
+                        <?php
+                        for ($i = $paging_info['page_start']; $i <= $paging_info['page_end']; $i++) {
+                            if ($i == $page) {
+                        ?>
+                            <li class="bpl_inner paging_current"><a href="javascript:void(0);" class="bpl_cont"><?= $i ?></a></li>
+                        <?php } else { ?>
+                            <li class="bpl_inner"><a href="./notice.php?page=<?= $i ?>" class="bpl_cont"><?= $i ?></a></li>
+                        <?php        
+                            }
+                        }
+                        ?>
+
+                        <?php if ($paging_info['page_next'] < $paging_info['page_total']) { ?>
+                        <li class="bpl_inner"><a href="./notice.php?page=<?= $paging_info['page_next'] ?>" class="bpl_cont">&gt;</a></li>
+                        <?php } ?>
                     </ul>
                 </div>
-            </div>
 
+            </div>
         </div>
     </div>
 </div>
 
 
 <?php
+    $notice_check_result->free();
+    $result->free();
     mysqli_close($conn);
     flush();
 ?>
