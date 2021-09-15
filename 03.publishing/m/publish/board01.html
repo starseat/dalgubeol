@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="description" content="desc">
-    <title>달구벌명가식품</title>
+    <title>달구벌명가</title>
     <link rel="canonical" href="https://url">
     <meta property="og:type" content="website">
     <meta property="og:title" content="title">
     <meta property="og:description" content="deesc">
     <meta property="og:url" content="url">
-    <script type="text/javascript" src="../../lib/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="../../lib/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="../../lib/slick-1.6.0.min.js"></script>
     <script type="text/javascript" src="ui.js"></script>
     <link rel="stylesheet" type="text/css" href="../../css/slick.css" media="all" />
@@ -26,7 +26,7 @@
             <h1 class="gnb_big_logo"><a href="#none" class="gnb_logo"><img src="../img/gnb_logo.png" alt="달구벌명가식품"></a></h1>
             <div class="common_lnb_inner">
                 <ul class="common_lnb_list">
-                    <li class="slnb_inner">
+                    <li class="slnb_inner"><!--  gnb_current -->
                         <a href="#none" class="slnb_link">
                             <span class="slnb_txt_box">
                                 <span class="slnb_txt">
@@ -44,16 +44,16 @@
                             </span>
                         </a>
                     </li>
-                    <li class="slnb_inner current">
+                    <li class="slnb_inner">
                         <a href="#none" class="slnb_link">
                             <span class="slnb_txt_box">
                                 <span class="slnb_txt">
-                                     제휴안내
+                                     제품안내
                                 </span>
                             </span>
                         </a>
                     </li>
-                    <li class="slnb_inner">
+                    <li class="slnb_inner gnb_current">
                         <a href="#none" class="slnb_link">
                             <span class="slnb_txt_box">
                                 <span class="slnb_txt">
@@ -93,7 +93,7 @@
                         <span class="btn_tab_text">원산지 정보</span>
                     </button>
                     <button class="btn_tab_cont">
-                        <span class="btn_tab_text">성적서 다운로드</span>
+                        <span class="btn_tab_text">성적서<br/>다운로드</span>
                     </button>
                     <button class="btn_tab_cont">
                         <span class="btn_tab_text">갤러리</span>
@@ -104,9 +104,9 @@
 
         <!-- 콘텐츠 -->
         <div class="container_inner">
-            <h3 class="blind">공지사항</h3>
             <div class="content_section">
                 <div class="board_list_w">
+                    <h3 class="content_title_board">공지사항</h3>
                     <strong class="board_search">
                         totla
                         <span>1건</span>
@@ -114,42 +114,27 @@
                     <div class="board_table_w">
                         <table>
                             <colgroup>
-                                <col width="10%">
-                                <col width="55%">
-                                <col width="15%">
-                                <col width="10%">
-                                <col width="10%">
+                                <col width="80%">
+                                <col width="20%">
                             </colgroup>
                             <thead>
                                 <tr>
-                                    <th scope="col">번호</th>
                                     <th scope="col">제목</th>
-                                    <th scope="col">글쓴이</th>
                                     <th scope="col">날짜</th>
-                                    <th scope="col">조회</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr class="notice">
-                                    <td>공지</td>
                                     <td>현대홈쇼핑 방송(2018년 7월 10일 pm11:50)</td>
-                                    <td>달구벌명가식품</td>
                                     <td>07.04</td>
-                                    <td>482</td>
                                 </tr>
-                                <tr>
-                                    <td>5</td>
+                                <tr class="notice">
                                     <td>홈쇼핑 방송 종료 전 완판! 달구벌 막창이 다시 방송됩니다.</td>
-                                    <td>달구벌명가식품</td>
                                     <td>07.04</td>
-                                    <td>482</td>
                                 </tr>
-                                <tr>
-                                    <td>4</td>
-                                    <td>게시판 타이틀 영역 게시판 타이틀 영역 게시판 타이틀 영역 게시판 타이틀 영역 게시판 타이틀 영역 </td>
-                                    <td>달구벌명가식품</td>
+                                <tr class="notice">
+                                    <td>게시판 타이틀 영역 게시판 타이틀 영역 게시판 타이틀 영역 게시판 타이틀 영역 게시판 타이틀 영역</td>
                                     <td>07.04</td>
-                                    <td>482</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -179,18 +164,16 @@
 
     <!-- 푸터 -->
     <div class="footer">
-       <div class="footer_inner">
-           <div class="footer_text_list">
-               <span class="ftl_cont">사업자등록번호 : 470-81-01279</span>
-               <span class="ftl_cont">대표 : 김성화<br/></span>
-               <span class="ftl_cont">TEL : 053-358-6611~2</span>
-               <span class="ftl_cont">FAX : 053-358-6622</span>
-           </div>
-           <div class="footer_text_list2">
-               <span class="ftl_cont">경상북도 경산시 남천면 협석 2길 3 (주식회사 달구벌명가식품)<br/></span>
-               <span class="ftl_cont">COPYRIGHTS 2015 © 달구벌명가식품 ALLRESERVED</span>
-           </div>
-       </div>
+        <div class="footer_inner">
+            <div class="footer_text_list">
+                <span class="ftl_cont">사업자등록번호 : 470-81-01279</span>
+                <span class="ftl_cont">대표 : 김성화<br/></span>
+                <span class="ftl_cont">TEL : 053-358-6611~2</span>
+                <span class="ftl_cont">FAX : 053-358-6622<br/></span>
+                <span class="ftl_cont">경상북도 경산시 남천면 협석 2길 3 (주식회사 달구벌명가식품)<br/></span>
+                <span class="ftl_cont">COPYRIGHTS 2015 © 달구벌명가식품 ALLRESERVED</span>
+            </div>
+        </div>
     </div>
 
 </div>

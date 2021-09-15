@@ -28,7 +28,7 @@ function listSlick(){
         arrows:true,
         infinite: true,
         speed: 300,
-        slidesToShow: 4,
-        slidesToScroll: 4
+        slidesToShow: 2,
+        slidesToScroll: 2
     });
 }
