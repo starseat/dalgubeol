@@ -1,5 +1,7 @@
 <?php require_once('./fragment/header.php'); ?>
 
+<?php include('./db_conn.php'); ?>
+
 <!-- 콘텐츠 -->
 <div class="container">
     <div class="container_top">
@@ -22,13 +24,13 @@
                 <button class="btn_tab_cont tab_current"><!-- 탭활성화 "tab_current" -->
                     <span class="btn_tab_text">공지사항</span>
                 </button>
-                <button class="btn_tab_cont">
+                <button class="btn_tab_cont" onclick="javascript: location.href='./country.php'">
                     <span class="btn_tab_text">원산지 정보</span>
                 </button>
-                <button class="btn_tab_cont">
+                <button class="btn_tab_cont" onclick="javascript: location.href='./report.php'">
                     <span class="btn_tab_text">성적서 다운로드</span>
                 </button>
-                <button class="btn_tab_cont">
+                <button class="btn_tab_cont" onclick="javascript: location.href='./gallery.php'">
                     <span class="btn_tab_text">갤러리</span>
                 </button>
             </div>
@@ -109,6 +111,12 @@
         </div>
     </div>
 </div>
+
+
+<?php
+    mysqli_close($conn);
+    flush();
+?>
 
 <?php require_once('./fragment/footer.php'); ?>
 

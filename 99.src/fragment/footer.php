@@ -1,9 +1,4 @@
 
-<?php
-    // mysqli_close($conn);
-    // flush();
-?>
-
 <!-- 푸터 -->
 <div class="footer">
     <div class="footer_inner">

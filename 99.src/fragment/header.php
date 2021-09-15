@@ -35,10 +35,10 @@ include('./common.php');
                     </a>
                 </li>
                 <li class="slnb_inner current">
-                    <a href="#none" class="slnb_link">
+                    <a href="./product.php" class="slnb_link">
                         <span class="slnb_txt_box">
                             <span class="slnb_txt">
-                                    제휴안내
+                                    제품안내
                             </span>
                         </span>
                     </a>
