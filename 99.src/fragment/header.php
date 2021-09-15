@@ -8,6 +8,24 @@ include('./common.php');
 ?>
 
 <body>
+
+<script>
+// var isAppleDev = (/iphone|ipad|ipod/i.test(navigator.userAgent.toLowerCase()));  
+
+var IS_MOBILE = false;
+var filter = "win16|win32|win64|mac|macintel";
+if(navigator.platform) {
+    if(filter.indexOf(navigator.platform.toLowerCase()) < 0){
+        IS_MOBILE = true;
+    }
+}
+
+if(IS_MOBILE) {
+    location.href = './m/index.php';
+}
+
+</script>
+
 <div class="wrap main">
 <!-- GNB -->
 <div class="common_gnb_w"><!-- lnbtype_main / sticky / 모바일:gnb_open -->
@@ -44,7 +62,7 @@ include('./common.php');
                     </a>
                 </li>
                 <li class="slnb_inner">
-                    <a href="./board01.php" class="slnb_link">
+                    <a href="./notice.php" class="slnb_link">
                         <span class="slnb_txt_box">
                             <span class="slnb_txt">
                                 고객센터

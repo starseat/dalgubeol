@@ -172,9 +172,12 @@ input,button,select {outline:none; border-radius:0;}
 
 
 /* 메인 : 비주얼 */
-.section_visual_w {position:relative;}
-.main_visual_list {}
+.section_visual_w {position:relative; height:calc(100vh - 501px); overflow:hidden; background-color:#040404;}
+.main_visual_list {height:100%;}
 .main_vl_cont {display:block; box-sizing:border-box; position:relative; width:100vw;}
+.section_visual_w .slick-track,
+.section_visual_w .slick-list {height:100%;}
+.slick-slide img {margin:0 auto; width:100%;}
 .section_visual_w .slick-dots {position:absolute; left:0; top:158px; z-index:13; width:100%; text-align:center; overflow:hidden;}
 .section_visual_w .slick-dots li {display:inline-block; padding:0 14px;}
 .section_visual_w .slick-dots li button {display:block; position:relative; top:0; width:9px; height:9px; background-color:#fff; border-radius:100%; text-indent:9999px;}
@@ -192,7 +195,7 @@ input,button,select {outline:none; border-radius:0;}
 }
 .mvl_text img {display:inline-block; }
 .main_vl_cont.slick-current .mvl_text img {}
-.main_vl_cont.slick-current .mvl_text {margin-right:50px !important; opacity:1;}
+.main_vl_cont.slick-current .mvl_text {margin-right:40px !important; opacity:1;}
 
 .main_quick_menu_w {background-color:#2d2826;}
 .mquick_menu_inner {display:flex; justify-content: space-around; flex-wrap:wrap; margin:0 auto;}
@@ -299,20 +302,31 @@ input,button,select {outline:none; border-radius:0;}
 .board_table_w {margin-top:15px; border-top:1px solid #707070; text-align:center;}
 .board_table_w table {width:100%;}
 .board_table_w th {height:26px; background-color:#D2101B; font-size:12px; color:#fff; font-weight:400;}
-.board_table_w td {padding:0 10px; height:27px; text-align:left; box-sizing:border-box; border:1px solid #7070704d; border-width:1px 0; font-size:12px; color:#352F2D; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+.board_table_w td {padding:0 20px; height:27px; text-align:left; box-sizing:border-box; border:1px solid #7070704d; border-width:1px 0; font-size:12px; color:#352F2D; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
 .board_table_w td:last-child {text-align:center;}
 .board_table_w tr:hover td {background-color:#F4F4F4;}
+
+/* 서브 : 게시판 상세 */
+.board_table_view_w {padding:0 40px;}
+.board_view_title_w{}
+.board_view_title {display:block; margin-top:14px; padding-top:8px; border-top:1px solid #352F2D; font-size:13px;}
+.board_info_w {margin-top:6px; font-size:12px;}
+.board_info_list {}
+.board_info_cont {display:inline-block;}
+.board_text_box {margin-top:20px; padding:14px 10px 17px; background-color:#F4F4F4; font-size:12px; line-height:22px;}
+
+
 
 /* 서브 : 게시판 페이징 */
 .board_paging_w {margin-top:20px;}
 .board_paging_list {display:block; text-align:center;}
 .bpl_inner {display:inline-block; padding:0 4px;}
-.bpl_cont {display:block; width:20px; height:19px; line-height:21px; font-size:12px; background-color:#F4F4F4; color:#352F2D;}
+.bpl_cont {display:block; width:20px; height:19px; line-height:21px; font-size:12px; background-color:#F4F4F4; color:#352F2D; border:1px solid #E6E6E6;}
 .paging_current .bpl_cont,
 .bpl_cont:hover {background-color:#D2101B; color:#fff;}
-.board_view_w {padding:20px 15px; text-align:left;}
-.board_btn_action {display:block; overflow:hidden; margin-bottom:30px;}
-[class^="btn_board_"] {float:left; margin-right:7px; padding:3px 5px; font-size:12px; text-align:center; background-color:#F4F4F4; border:1px solid #707070; color:#707070;}
+.board_btn_action {display:block; overflow:hidden; margin-top:25px;}
+[class^="btn_board_"] {float:left; margin-right:7px; padding:5px 8px; font-size:12px; text-align:center; background-color:#F4F4F4; border:1px solid #E6E6E6; color:#352F2D;}
+.btn_board_list {float:right;}
 
 /* 서브 : 제품안내 - 상세 */
 .detail_view_w {padding:33px 40px 72px;}
@@ -332,16 +346,20 @@ input,button,select {outline:none; border-radius:0;}
 .gallery_list_w .mbif_text {min-height:37px; line-height:17px;}
 .gallery_list_w .mbif_date{margin-top:0;}
 
-/*  --------------- 태블릿 제어  --------------- */
-@media screen and (max-width:1080px) {
+/*  --------------- 태블릿 제어 wide  --------------- */
+@media screen and (max-width:1024px) {
+    .mvl_text_w {bottom:20px;}
+}
 
+/*  --------------- 태블릿 제어  --------------- */
+@media screen and (max-width:768px) {
 }
 
 /* --------------- end:태블릿 제어  --------------- */
 
 /*  --------------- 모바일 제어  --------------- */
-@media screen and (max-width:750px) {
-
+@media screen and (max-width:428px) {
+    .section_visual_w {height:347px;}
 }
 /*  --------------- end:모바일 제어  --------------- */
 
