@@ -53,7 +53,7 @@
             <div class="company_cont_box">
                 <strong class="content_title">수입육 브랜드</strong>
                 <div class="company02">
-                    <img src="./public/imgs/pc/partners/sub_company02.jpg" alt="">
+                    <img src="./public/imgs/pc/partners/sub_company02.jpg" alt="수입육 브랜드">
                 </div>
             </div>
 

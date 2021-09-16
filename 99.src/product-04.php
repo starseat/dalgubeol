@@ -9,7 +9,7 @@
                 <img src="./public/imgs/pc/detail/detail10.jpg" alt="소모듬구이">
                 <img src="./public/imgs/pc/detail/detail_review.jpg" alt="생생고객후기">
                 <img src="./public/imgs/pc/detail/detail_mart01.jpg" alt="마트입점">
-                <img src="./public/imgs/pc/detail/guide_makchang.jpg" alt="더 맛있게먹는법">
+                <img src="./public/imgs/pc/detail/guide_cowset.jpg" alt="더 맛있게먹는법">
             </div>
         </div>
     </div>

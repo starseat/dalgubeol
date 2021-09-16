@@ -8,7 +8,7 @@
             <div class="detail_image_w">
                 <img src="./public/imgs/pc/detail/detail08.jpg" alt="즉석소막창">
                 <img src="./public/imgs/pc/detail/detail_review.jpg" alt="생생고객후기">
-                <img src="./public/imgs/pc/detail/detail_mart01.jpg" alt="마트입점">
+                <img src="./public/imgs/pc/detail/detail_mart02.jpg" alt="마트입점">
                 <img src="./public/imgs/pc/detail/guide_makchang.jpg" alt="더 맛있게먹는법">
             </div>
         </div>

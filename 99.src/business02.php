@@ -38,7 +38,7 @@
             <div class="business02_cont_box">
                 <strong class="content_title">제휴사 안내</strong>
                 <div class="business_partners">
-                    <img src="./public/imgs/pc/partners/sub02_1_main2.jpg" alt="">
+                    <img src="./public/imgs/pc/partners/sub02_1_main2.jpg" alt="제휴사 안내">
                 </div>
                 <div class="box_info_w">
                     <ul class="box_info_list">
@@ -55,7 +55,7 @@
             <div class="business02_cont_box">
                 <strong class="content_title">온라인 판매처</strong>
                 <div class="business_partners">
-                    <img src="./public/imgs/pc/partners/sub02_1_main3.jpg" alt="">
+                    <img src="./public/imgs/pc/partners/sub02_1_main3.jpg" alt="온라인 판매처">
                 </div>
                 <div class="box_info_w">
                     <ul class="box_info_list">
@@ -67,10 +67,9 @@
             <div class="business02_cont_box">
                 <strong class="content_title">마트, 백화점 입점</strong>
                 <div class="business_partners">
-                    <img src="./public/imgs/pc/business_02.jpg" alt="">
+                    <img src="./public/imgs/pc/business_02.jpg" alt="마트, 백화점 입점">
                 </div>
             </div>
-
 
         </div>
     </div>

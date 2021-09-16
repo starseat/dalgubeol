@@ -1,3 +1,4 @@
+</div> <!-- .wrap.main -->
 
 <!-- 푸터 -->
 <div class="footer">
