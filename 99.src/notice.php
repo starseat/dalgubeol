@@ -104,7 +104,7 @@ $result = mysqli_query($conn, $sql) or exit(mysqli_error($conn));
                         </thead>
                         <tbody>
                             <?php while ($row = $notice_check_result->fetch_array()) { ?>
-                            <tr class="notice" onclick="alert(<?= $row['wr_id']; ?>);">
+                            <tr class="notice" onclick="moveView(<?= $row['wr_id']; ?>);">
                                 <td>공지</td>
                                 <td style="text-align: left;"><?= $row['wr_subject']; ?></td>
                                 <td><?= $row['wr_name']; ?></td>
@@ -114,7 +114,7 @@ $result = mysqli_query($conn, $sql) or exit(mysqli_error($conn));
                             <?php } ?>
                             
                             <?php while ($row = $result->fetch_array()) { ?>
-                            <tr onclick="alert(<?= $row['wr_id']; ?>);">
+                            <tr onclick="moveView(<?= $row['wr_id']; ?>);">
                                 <td><?= $row['num']; ?></td>
                                 <td style="text-align: left;"><?= $row['wr_subject']; ?></td>
                                 <td><?= $row['wr_name']; ?></td>
@@ -179,6 +179,10 @@ $result = mysqli_query($conn, $sql) or exit(mysqli_error($conn));
     });
 
     $(window).resize(function() {   });
+
+    function moveView(id) {
+        location.href = './notice-view.php?wr_id=' + id;
+    }
 </script>
 
 <?php require_once('./fragment/tail.php'); ?>
