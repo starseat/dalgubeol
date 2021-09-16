@@ -44,9 +44,9 @@
 
 
 /* RESET */
-html,body{-webkit-text-size-adjust:none; color:#000; font-weight:400; line-height: 1.4; letter-spacing: -0.01em; overflow:hidden; overflow-y:auto;}
+html,body{-webkit-text-size-adjust:none; color:#000; font-weight:400; line-height: 1.4; letter-spacing: -0.01em; overflow:auto;}
 body,p,h1,h2,h3,h4,h5,h6,ul,ol,li,dl,dt,dd,table,th,td,form,fieldset,legend,input,textarea,button,select,img,div {margin:0; padding:0;}
-body {position:relative; font-family:'Pretendard-Light', 'Noto Sans KR', 'Noto Sans', 'malgun gothic' , '맑은 고딕' , sans-serif; }
+body {position:relative; min-width:1100px; font-family:'Pretendard-Light', 'Noto Sans KR', 'Noto Sans', 'malgun gothic' , '맑은 고딕' , sans-serif; }
 img,fieldset{border:0}
 button {background:none; border:0; cursor:pointer;}
 ul,ol{list-style:none}
@@ -276,7 +276,7 @@ input,button,select {outline:none; border-radius:0;}
 .board_table_w th {height:42px; background-color:#D2101B; font-size:18px; color:#fff; font-weight:400;}
 .board_table_w td {padding:10px; box-sizing:border-box; border:1px solid #707070; border-width:1px 0; font-size:16px; color:#352F2D; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
 .notice td,
-.board_table_w tr:hover td {background-color:#F4F4F4;}
+.board_table_w tr:hover td {background-color:#F4F4F4; cursor:pointer;}
 
 /* 서브 : 게시판 페이징 */
 .board_paging_w {margin-top:50px;}
