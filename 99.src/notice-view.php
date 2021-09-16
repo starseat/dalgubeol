@@ -1,6 +1,46 @@
 <?php require_once('./fragment/header.php'); ?>
 <?php include('./db_conn.php'); ?>
 
+<?php
+
+$wr_id = 0;
+$is_access = false;
+if ($_SERVER['QUERY_STRING'] != '') {
+    $wr_id = $_GET['wr_id'];
+    if (!isEmpty($wr_id) && is_numeric($wr_id)) {
+        $is_access = true;
+    }
+}
+
+if (!$is_access) {
+    viewAlert('잘못된 접근 입니다.');
+    mysqli_close($conn);
+    flush();
+    //historyBack();
+    echo ('<meta http-equiv="refresh" content="0 url=./notice.php" />');
+    exit;
+}
+
+// 조회수 처리
+$notice_view_cookie_name = 'notice_view_' . $wr_id;
+if (!isset($_COOKIE[$notice_view_cookie_name]) || empty($_COOKIE[$notice_view_cookie_name])) {
+    $sql  = 'UPDATE g5_write_notice set wr_hit = wr_hit + 1 WHERE wr_id = ' . $wr_id;
+    $result = mysqli_query($conn, $sql) or exit(mysqli_error($conn));
+    // setcookie($notice_view_cookie_name, 1, time() + (60 * 60 * 24), '/');  // 1 day
+}
+
+$sql = "SELECT wr_subject, wr_link1, wr_link2, wr_hit, wr_name, wr_datetime, wr_last, wr_file, wr_content FROM g5_write_notice WHERE wr_id= $wr_id";
+$result = mysqli_query($conn, $sql) or exit(mysqli_error($conn));
+$data = mysqli_fetch_array($result);
+$result->free();
+
+$isFile = intVal($data['wr_file']);
+
+if($isFile > 0) {
+
+}
+?>
+
 <!-- 콘텐츠 -->
 <div class="container">
     <div class="container_top">
@@ -36,38 +76,6 @@
         </div>
     </div>
 
-<?php
-
-$wr_id = 0;
-$is_access = false;
-if ($_SERVER['QUERY_STRING'] != '') {
-    $wr_id = $_GET['wr_id'];
-    if (!isEmpty($wr_id) && is_numeric($wr_id)) {
-        $is_access = true;
-    }
-}
-
-if (!$is_access) {
-    viewAlert('잘못된 접근 입니다.');
-    mysqli_close($conn);
-    flush();
-    //historyBack();
-    echo ('<meta http-equiv="refresh" content="0 url=./notice.php" />');
-    exit;
-}
-
-$sql = "SELECT wr_subject, wr_link1, wr_link2, wr_hit, wr_name, wr_datetime, wr_last, wr_file, wr_content FROM g5_write_notice WHERE wr_id= $wr_id";
-$result = mysqli_query($conn, $sql) or exit(mysqli_error($conn));
-$data = mysqli_fetch_array($result);
-$result->free();
-
-$isFile = intVal($data['wr_file']);
-
-if($isFile > 0) {
-
-}
-?>
-
     <!-- 콘텐츠 -->
     <div class="container_inner">
         <div class="content_section">
@@ -96,7 +104,7 @@ if($isFile > 0) {
                             </ul>
                         </div>
                     </div>
-                    <div class="board_text_box">
+                    <p class="board_text_box">
                         <?= $data['wr_content']; ?>
 
                         
@@ -110,7 +118,7 @@ if($isFile > 0) {
                         <br>
                         - link 2 : <a href="<?= $data['wr_link2']; ?>"><?= $data['wr_link2']; ?></a>
                         <?php } ?>
-                    </div>
+                    </p>
                     <div class="board_btn_action">
                         <button type="button" class="btn_board_prev">이전글</button>
                         <button type="button" class="btn_board_next">다음글</button>
