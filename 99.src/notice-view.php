@@ -4,6 +4,7 @@
 <?php
 
 $wr_id = 0;
+
 $is_access = false;
 if ($_SERVER['QUERY_STRING'] != '') {
     $wr_id = $_GET['wr_id'];
@@ -13,7 +14,7 @@ if ($_SERVER['QUERY_STRING'] != '') {
 }
 
 if (!$is_access) {
-    viewAlert('잘못된 접근 입니다.');
+    // viewAlert('잘못된 접근 입니다.');
     mysqli_close($conn);
     flush();
     //historyBack();
@@ -29,18 +30,28 @@ if (!isset($_COOKIE[$notice_view_cookie_name]) || empty($_COOKIE[$notice_view_co
     // setcookie($notice_view_cookie_name, 1, time() + (60 * 60 * 24), '/');  // 1 day
 }
 
-$sql = "SELECT wr_subject, wr_link1, wr_link2, wr_hit, wr_name, wr_datetime, wr_last, wr_file, wr_content FROM g5_write_notice WHERE wr_id= $wr_id";
+$sql = "SELECT wr_subject, wr_link1, wr_link2, wr_hit, wr_name, wr_datetime, wr_last, wr_file, wr_option, wr_content FROM g5_write_notice WHERE wr_id= $wr_id";
 $result = mysqli_query($conn, $sql) or exit(mysqli_error($conn));
 $data = mysqli_fetch_array($result);
 $result->free();
 
+$html = 0;
+$stx = 0;
+if (strstr($data['wr_option'], 'html1')) {
+    $html = 1;
+}
+else if (strstr($data['wr_option'], 'html2')) {
+    $html = 2;
+}
+
+$content = $data['wr_content'];
+$content = str_replace("\n", "<br>", $content);
+$content = str_replace('  ', '&nbsp; ', $content);
+
 $isFile = intVal($data['wr_file']);
-
-if($isFile > 0) {
-
+if ($isFile > 0) {
 }
 ?>
-
 <!-- 콘텐츠 -->
 <div class="container">
     <div class="container_top">
@@ -58,9 +69,10 @@ if($isFile > 0) {
         </div>
 
         <!-- 탭버튼 -->
-        <div class="tab_btn_box_w"><!-- select 오픈시 select_open 추가 -->
+        <div class="tab_btn_box_w">
             <div class="btn_tab_inner">
-                <button class="btn_tab_cont tab_current" onclick="javascript: location.href='./notice.php'"><!-- 탭활성화 "tab_current" -->
+                <button class="btn_tab_cont tab_current" onclick="javascript: location.href='./notice.php'">
+                    <!-- 탭활성화 "tab_current" -->
                     <span class="btn_tab_text">공지사항</span>
                 </button>
                 <button class="btn_tab_cont" onclick="javascript: location.href='./country.php'">
@@ -84,7 +96,7 @@ if($isFile > 0) {
                 <div class="board_table_view_w">
                     <div class="board_view_title_w">
                         <strong class="board_view_title">
-                            <?= $data['wr_subject']; ?>
+                            현대홈쇼핑 방송(2018년 7월 10일 pm11:50)
                         </strong>
                         <div class="board_info_w">
                             <ul class="board_info_list">
@@ -104,25 +116,27 @@ if($isFile > 0) {
                             </ul>
                         </div>
                     </div>
-                    <p class="board_text_box">
-                        <?= $data['wr_content']; ?>
+                    <br>
+                    <div class="board_text_box">
+                        <?= $content; ?>
 
-                        
-                        <br>
-                        <?php if(!isEmpty($data['wr_link1'])) { ?>                        
-                        <br>
-                        - link 1 : <a href="<?= $data['wr_link1']; ?>"><?= $data['wr_link1']; ?></a>
+                        <br><br><hr>
+                        <?php if (!isEmpty($data['wr_link1'])) { ?>
+                            <br>
+                            - link 1 : <a href="<?= $data['wr_link1']; ?>"><?= $data['wr_link1']; ?></a>
                         <?php } ?>
-                        
-                        <?php if(!isEmpty($data['wr_link2'])) { ?>
-                        <br>
-                        - link 2 : <a href="<?= $data['wr_link2']; ?>"><?= $data['wr_link2']; ?></a>
+
+                        <?php if (!isEmpty($data['wr_link2'])) { ?>
+                            <br>
+                            - link 2 : <a href="<?= $data['wr_link2']; ?>"><?= $data['wr_link2']; ?></a>
                         <?php } ?>
-                    </p>
+
+                    </div>
+                    <br>
                     <div class="board_btn_action">
                         <button type="button" class="btn_board_prev">이전글</button>
                         <button type="button" class="btn_board_next">다음글</button>
-                        <button type="button" class="btn_board_list">목록</button>
+                        <button type="button" class="btn_board_list" onclick="javascript: location.href='./notice.php'">목록</button>
                     </div>
                 </div>
             </div>

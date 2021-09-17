@@ -9,7 +9,11 @@ function isEmpty($value) {
 }
 
 function viewAlert($message) {
-    echo ("<script>alert('$message');</script>");
+    echo "<script>alert('$message');</script>";
+}
+
+function debugConsole($message) {
+    echo "<script>console.log($message);</script>";
 }
 
 function SQLFiltering($sql){
