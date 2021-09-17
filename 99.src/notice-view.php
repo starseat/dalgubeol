@@ -22,6 +22,7 @@ if (!$is_access) {
     exit;
 }
 
+
 // 조회수 처리
 $notice_view_cookie_name = 'notice_view_' . $wr_id;
 if (!isset($_COOKIE[$notice_view_cookie_name]) || empty($_COOKIE[$notice_view_cookie_name])) {
@@ -47,9 +48,46 @@ else if (strstr($data['wr_option'], 'html2')) {
 $content = $data['wr_content'];
 $content = str_replace("\n", "<br>", $content);
 $content = str_replace('  ', '&nbsp; ', $content);
+$content = str_replace('\\', '₩', $content);
+
+$prevId = 0;
+$nextId = 0;
+
+$sql = "SELECT bo_notice FROM g5_board WHERE bo_table='notice'";
+$result = mysqli_query($conn, $sql) or exit(mysqli_error($conn));
+$notice_id_result = mysqli_fetch_array($result);
+$result->free();
+$notice_ids = join(',', $notice_id_result);
+
+$sql = "SELECT ifnull(max(pp.wr_id), 0) as prev_id FROM (SELECT temp.wr_id FROM g5_write_notice temp WHERE temp.wr_id NOT IN (" . $notice_ids . ") ) pp WHERE pp.wr_id < $wr_id";
+$result = mysqli_query($conn, $sql) or exit(mysqli_error($conn));
+$prev_data = mysqli_fetch_array($result);
+$result->free();
+$prevId = intVal($prev_data['prev_id']);
+
+$sql = "SELECT ifnull(min(nn.wr_id), 0) as next_id FROM (SELECT temp.wr_id FROM g5_write_notice temp WHERE temp.wr_id NOT IN (" . $notice_ids . ") ) nn WHERE nn.wr_id > $wr_id";
+$result = mysqli_query($conn, $sql) or exit(mysqli_error($conn));
+$next_data = mysqli_fetch_array($result);
+$result->free();
+$nextId = intVal($next_data['next_id']);
+
 
 $isFile = intVal($data['wr_file']);
+$file_data = array();
+$img_data = array();
 if ($isFile > 0) {
+    $sql = "SELECT bf_source, bf_file, bf_download, bf_type FROM g5_board_file where bo_table = 'notice' AND  wr_id = $wr_id";
+    $upload_data_result = mysqli_query($conn, $sql) or exit(mysqli_error($conn));    
+
+    while ($file = $upload_data_result->fetch_array()) {
+        if(intVal($file['bf_type']) == 0) {
+            array_push($file_data, $file);
+        }
+        else {
+            array_push($img_data, $file);
+        }
+    }
+    $upload_data_result->free();
 }
 ?>
 <!-- 콘텐츠 -->
@@ -117,6 +155,30 @@ if ($isFile > 0) {
                         </div>
                     </div>
                     <br>
+                    <div class="board_file_box">
+                        <?php
+                        if(count($img_data) > 0) {
+                            for($i=0; $i<count($img_data); $i++) {
+                                $img = $img_data[$i];
+                                echo '<a href="http://www.dalgubeolmakchang.com/bbs/download.php?bo_table=notice&amp;wr_id=' . $wr_id . '&amp;no=0" class="view_file_download"';
+                                echo '<img src="http://www.dalgubeolmakchang.com/skin/board/basic/img/icon_file.gif" alt="첨부파일: ' . $img['bf_source'] . '">';
+                                echo '</a>';
+                            }
+                        }
+                        ?>
+                    </div>
+                    <div class="board_img_box">
+                        <?php
+                        if(count($img_data) > 0) {
+                            for($i=0; $i<count($img_data); $i++) {
+                                $img = $img_data[$i];
+                                echo '<a href="http://www.dalgubeolmakchang.com/bbs/view_image.php?bo_table=notice&amp;fn=' . $img['bf_file'] . '" target="_blank" class="view_image">';
+                                echo '<img src="http://www.dalgubeolmakchang.com/data/file/notice/' . $img['bf_file'] . '" alt="' . $img['bf_source'] . '">';
+                                echo '</a>';
+                            }
+                        }
+                        ?>
+                    </div>
                     <div class="board_text_box">
                         <?= $content; ?>
 
@@ -134,10 +196,17 @@ if ($isFile > 0) {
                     </div>
                     <br>
                     <div class="board_btn_action">
-                        <button type="button" class="btn_board_prev">이전글</button>
-                        <button type="button" class="btn_board_next">다음글</button>
-                        <button type="button" class="btn_board_list" onclick="javascript: location.href='./notice.php'">목록</button>
+                        <?php if($prevId > 0) { ?>
+                        <button type="button" class="btn_board_prev" onclick="javascript: location.href='./notice-view.php?wr_id=<?= $prevId; ?>'">이전글</button>
+                        <?php } ?>
+                        
+                        <?php if($nextId > 0) { ?>
+                        <button type="button" class="btn_board_next" onclick="javascript: location.href='./notice-view.php?wr_id=<?= $nextId; ?>'">다음글</button>
+                        <?php } ?>
+                        
+                        <button type="button" class="btn_board_list" onclick="javascript: location.href='./notice.php'">목록</button>                        
                     </div>
+                    </p>
                 </div>
             </div>
 
