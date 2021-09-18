@@ -106,7 +106,7 @@ $result = mysqli_query($conn, $sql) or exit(mysqli_error($conn));
 
                             <?php while ($row = $result->fetch_array()) { ?>
                             <tr onclick="moveView(<?= $row['wr_id']; ?>);">
-                                <td><?= $row['wr_name']; ?></td>
+                                <td style="text-align: left;"><?= $row['wr_subject']; ?></td>
                                 <td><?= substr($row['wr_datetime'], 5, 5); ?></td>
                             </tr>
                             <?php } ?>

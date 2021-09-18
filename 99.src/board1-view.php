@@ -157,7 +157,7 @@ if ($isFile > 0) {
                         if(count($file_data) > 0) {
                             for($i=0; $i<count($file_data); $i++) {
                                 $file = $file_data[$i];
-                                echo '<a href="http://www.dalgubeolmakchang.com/bbs/download.php?bo_table=download&amp;wr_id=' . $wr_id . '&amp;no=0" class="view_file_download">';
+                                echo '<a href="http://www.dalgubeolmakchang.com/bbs/download.php?bo_table=notice&amp;wr_id=' . $wr_id . '&amp;no=0" class="view_file_download">';
                                 echo '<img src="http://www.dalgubeolmakchang.com/skin/board/basic/img/icon_file.gif" alt="첨부파일: ' . $file['bf_source'] . '">';
                                 echo $file['bf_source'];
                                 echo '</a>';
