@@ -124,12 +124,10 @@ if ($isFile > 0) {
     <div class="container_inner">
         <div class="content_section">
             <div class="board_list_w">
-                <h3 class="content_title_board">공지사항</h3>
+                <h3 class="content_title_board">원산지 정보</h3>
                 <div class="board_table_view_w">
                     <div class="board_view_title_w">
-                        <strong class="board_view_title">
-                            현대홈쇼핑 방송(2018년 7월 10일 pm11:50)
-                        </strong>
+                        <strong class="board_view_title"><?= $data['wr_subject']; ?></strong>
                         <div class="board_info_w">
                             <ul class="board_info_list">
                                 <li class="board_info_cont">
@@ -151,11 +149,12 @@ if ($isFile > 0) {
                     <br>
                     <div class="board_file_box">
                         <?php
-                        if(count($img_data) > 0) {
-                            for($i=0; $i<count($img_data); $i++) {
-                                $img = $img_data[$i];
-                                echo '<a href="http://www.dalgubeolmakchang.com/bbs/download.php?bo_table=board&amp;wr_id=' . $wr_id . '&amp;no=0" class="view_file_download"';
-                                echo '<img src="http://www.dalgubeolmakchang.com/skin/board/basic/img/icon_file.gif" alt="첨부파일: ' . $img['bf_source'] . '">';
+                        if(count($file_data) > 0) {
+                            for($i=0; $i<count($file_data); $i++) {
+                                $file = $file_data[$i];
+                                echo '<a href="http://www.dalgubeolmakchang.com/bbs/download.php?bo_table=download&amp;wr_id=' . $wr_id . '&amp;no=0" class="view_file_download">';
+                                echo '<img src="http://www.dalgubeolmakchang.com/skin/board/basic/img/icon_file.gif" alt="첨부파일: ' . $file['bf_source'] . '">';
+                                echo $file['bf_source'];
                                 echo '</a>';
                             }
                         }

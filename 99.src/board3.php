@@ -24,10 +24,10 @@
                 <button class="btn_tab_cont" onclick="javascript: location.href='./board1.php'">
                     <span class="btn_tab_text">공지사항</span>
                 </button>
-                <button class="btn_tab_cont tab_current">
+                <button class="btn_tab_cont" onclick="javascript: location.href='./board2.php'">
                     <span class="btn_tab_text">원산지 정보</span>
                 </button>
-                <button class="btn_tab_cont" onclick="javascript: location.href='./board3.php'">
+                <button class="btn_tab_cont tab_current">
                     <span class="btn_tab_text">성적서 다운로드</span>
                 </button>
                 <button class="btn_tab_cont" onclick="javascript: location.href='./board4.php'">
@@ -43,7 +43,7 @@ $item_row_count = 10;
 // 하단 페이지 block 수 (1, 2, 3, 4, ...  이런거)
 $page_block_count = 10;
 
-$sql = "SELECT COUNT(*) FROM g5_write_board";
+$sql = "SELECT COUNT(*) FROM g5_write_download";
 
 $result = mysqli_query($conn, $sql) or exit(mysqli_error($conn));
 $total_count = mysqli_fetch_array($result);
@@ -57,7 +57,7 @@ $paging_info = getPagingInfo($page, $total_count, $item_row_count, $page_block_c
 $sql = "
     SELECT page.* FROM (
         SELECT @rownum:=@rownum-1 as num, board.wr_id, board.wr_subject, board.wr_name, board.wr_hit, board.wr_datetime 
-        FROM g5_write_board board, (SELECT @rownum:=(select count(*) FROM g5_write_board )+1) rownum_temp 
+        FROM g5_write_download board, (SELECT @rownum:=(select count(*) FROM g5_write_download )+1) rownum_temp 
         ORDER BY board.wr_id DESC
     ) page LIMIT " . $paging_info['page_db'] . ", $item_row_count
 ";
@@ -67,7 +67,7 @@ $result = mysqli_query($conn, $sql) or exit(mysqli_error($conn));
 
     <!-- 콘텐츠 -->
     <div class="container_inner">
-        <h3 class="blind">원산지 정보</h3>
+        <h3 class="blind">성적서 다운로드</h3>
         <div class="content_section">
             <div class="board_list_w">
                 <strong class="board_search">
@@ -108,7 +108,7 @@ $result = mysqli_query($conn, $sql) or exit(mysqli_error($conn));
                 <div class="board_paging_w">
                     <ul class="board_paging_list">
                         <?php if ($paging_info['page_prev'] > 0) { ?>
-                        <li class="bpl_inner"><a href="./board2.php?page=<?= $paging_info['page_prev'] ?>" class="bpl_cont">&lt;</a></li>
+                        <li class="bpl_inner"><a href="./board3.php?page=<?= $paging_info['page_prev'] ?>" class="bpl_cont">&lt;</a></li>
                         <?php } ?>
 
                         <?php
@@ -117,14 +117,14 @@ $result = mysqli_query($conn, $sql) or exit(mysqli_error($conn));
                         ?>
                             <li class="bpl_inner paging_current"><a href="javascript:void(0);" class="bpl_cont"><?= $i ?></a></li>
                         <?php } else { ?>
-                            <li class="bpl_inner"><a href="./board2.php?page=<?= $i ?>" class="bpl_cont"><?= $i ?></a></li>
+                            <li class="bpl_inner"><a href="./board3.php?page=<?= $i ?>" class="bpl_cont"><?= $i ?></a></li>
                         <?php        
                             }
                         }
                         ?>
 
                         <?php if ($paging_info['page_next'] < $paging_info['page_total']) { ?>
-                        <li class="bpl_inner"><a href="./board2.php?page=<?= $paging_info['page_next'] ?>" class="bpl_cont">&gt;</a></li>
+                        <li class="bpl_inner"><a href="./board3.php?page=<?= $paging_info['page_next'] ?>" class="bpl_cont">&gt;</a></li>
                         <?php } ?>
                     </ul>
                 </div>
@@ -159,7 +159,7 @@ $result = mysqli_query($conn, $sql) or exit(mysqli_error($conn));
     $(window).resize(function() {   });
 
     function moveView(id) {
-        location.href = './board2-view.php?wr_id=' + id;
+        location.href = './board3-view.php?wr_id=' + id;
     }
 </script>
 

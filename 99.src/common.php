@@ -183,4 +183,21 @@ function getFilePath($path) {
     return mb_substr($path, 1, mb_strlen($path, "UTF-8"), "UTF-8");
 }
 
+function getExt($filename) {
+    // 1. strrchr함수를 사용해서 확장자 구하기
+    //$ext = substr(strrchr($filename, '.'), 1); 
+    
+    // 2. strrpos 함수와 substr함수를 사용해서 확장자 구하기
+    // $ext = substr($filename, strrpos($filename, '.') + 1);
+
+    // 3. preg_replace 함수에 정규식을 대입해서 확장자 구하기
+    // $ext = preg_replace('/^.*\.([^.]+)$/D', '$1', $filename);
+
+    // 4. pathinfo 함수를 사용해서 확장자 구하기
+    $fileinfo = pathinfo($filename);
+    $ext = $fileinfo['extension'];
+
+    return $ext;
+}
+
 ?>

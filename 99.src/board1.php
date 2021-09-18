@@ -21,16 +21,16 @@
         <!-- 탭버튼 -->
         <div class="tab_btn_box_w"><!-- select 오픈시 select_open 추가 -->
             <div class="btn_tab_inner">
-                <button class="btn_tab_cont tab_current"><!-- 탭활성화 "tab_current" -->
+                <button class="btn_tab_cont tab_current">
                     <span class="btn_tab_text">공지사항</span>
                 </button>
                 <button class="btn_tab_cont" onclick="javascript: location.href='./board2.php'">
                     <span class="btn_tab_text">원산지 정보</span>
                 </button>
-                <button class="btn_tab_cont" onclick="javascript: location.href='./board2.php'">
+                <button class="btn_tab_cont" onclick="javascript: location.href='./board3.php'">
                     <span class="btn_tab_text">성적서 다운로드</span>
                 </button>
-                <button class="btn_tab_cont" onclick="javascript: location.href='./board3.php'">
+                <button class="btn_tab_cont" onclick="javascript: location.href='./board4.php'">
                     <span class="btn_tab_text">갤러리</span>
                 </button>
             </div>
@@ -181,7 +181,7 @@ $result = mysqli_query($conn, $sql) or exit(mysqli_error($conn));
     $(window).resize(function() {   });
 
     function moveView(id) {
-        location.href = './notice-view.php?wr_id=' + id;
+        location.href = './board1-view.php?wr_id=' + id;
     }
 </script>
 
