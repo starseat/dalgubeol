@@ -21,10 +21,10 @@
         <!-- 탭버튼 -->
         <div class="tab_btn_box_w"><!-- select 오픈시 select_open 추가 -->
             <div class="btn_tab_inner">
-                <button class="btn_tab_cont tab_current"><!-- 탭활성화 "tab_current" -->
+                <button class="btn_tab_cont"  onclick="javascript: location.href='./board1.php'">
                     <span class="btn_tab_text">공지사항</span>
                 </button>
-                <button class="btn_tab_cont" onclick="javascript: location.href='./board2.php'">
+                <button class="btn_tab_cont tab_current">
                     <span class="btn_tab_text">원산지 정보</span>
                 </button>
                 <button class="btn_tab_cont" onclick="javascript: location.href='./board2.php'">
