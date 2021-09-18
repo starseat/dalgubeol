@@ -62,7 +62,7 @@ if(IS_MOBILE) {
                         </a>
                     </li>
                     <li class="slnb_inner">
-                        <a href="./notice.php" class="slnb_link">
+                        <a href="./board1.php" class="slnb_link">
                             <span class="slnb_txt_box">
                                 <span class="slnb_txt">
                                     고객센터

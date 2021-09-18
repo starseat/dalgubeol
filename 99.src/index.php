@@ -38,7 +38,7 @@
                 <span class="mquick_text">제품안내</span>
                 <span class="more_text">+더보기</span>
             </a>
-            <a href="./notice.php" class="mquick_link04">
+            <a href="./board1.php" class="mquick_link04">
                 <span class="mquick_text">고객센터</span>
                 <span class="more_text">+더보기</span>
             </a>

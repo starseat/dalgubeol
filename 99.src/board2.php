@@ -24,13 +24,13 @@
                 <button class="btn_tab_cont tab_current"><!-- 탭활성화 "tab_current" -->
                     <span class="btn_tab_text">공지사항</span>
                 </button>
-                <button class="btn_tab_cont" onclick="javascript: location.href='./country.php'">
+                <button class="btn_tab_cont" onclick="javascript: location.href='./board2.php'">
                     <span class="btn_tab_text">원산지 정보</span>
                 </button>
-                <button class="btn_tab_cont" onclick="javascript: location.href='./report.php'">
+                <button class="btn_tab_cont" onclick="javascript: location.href='./board2.php'">
                     <span class="btn_tab_text">성적서 다운로드</span>
                 </button>
-                <button class="btn_tab_cont" onclick="javascript: location.href='./gallery.php'">
+                <button class="btn_tab_cont" onclick="javascript: location.href='./board3.php'">
                     <span class="btn_tab_text">갤러리</span>
                 </button>
             </div>
@@ -38,22 +38,12 @@
     </div>
 
 <?php
-
-$sql = "SELECT bo_notice FROM g5_board WHERE bo_table='notice'";
-$result = mysqli_query($conn, $sql) or exit(mysqli_error($conn));
-$notice_id_result = mysqli_fetch_array($result);
-$result->free();
-$notice_ids = join(',', $notice_id_result);
-
-$sql = "SELECT wr_id, wr_subject, wr_name, wr_hit, wr_datetime FROM g5_write_notice WHERE wr_id IN (" . $notice_ids . ")";
-$notice_check_result = mysqli_query($conn, $sql) or exit(mysqli_error($conn));
-
 // 게시글 수
 $item_row_count = 10;
 // 하단 페이지 block 수 (1, 2, 3, 4, ...  이런거)
 $page_block_count = 10;
 
-$sql = "SELECT COUNT(*) FROM g5_write_notice";
+$sql = "SELECT COUNT(*) FROM g5_write_board";
 
 $result = mysqli_query($conn, $sql) or exit(mysqli_error($conn));
 $total_count = mysqli_fetch_array($result);
@@ -65,12 +55,11 @@ $page = isset($_GET['page']) ? trim($_GET['page']) : 1;
 $paging_info = getPagingInfo($page, $total_count, $item_row_count, $page_block_count);
 
 $sql = "
-    SELECT notice_page.* FROM (
-        SELECT @rownum:=@rownum-1 as num, notice.wr_id, notice.wr_subject, notice.wr_name, notice.wr_hit, notice.wr_datetime 
-        FROM g5_write_notice notice, (SELECT @rownum:=(select count(*) FROM g5_write_notice WHERE wr_id NOT IN (" . $notice_ids . ") )+1) rownum_temp 
-        WHERE notice.wr_id NOT IN (" . $notice_ids . ") 
-        ORDER BY notice.wr_id DESC
-    ) notice_page LIMIT " . $paging_info['page_db'] . ", $item_row_count
+    SELECT page.* FROM (
+        SELECT @rownum:=@rownum-1 as num, board.wr_id, board.wr_subject, board.wr_name, board.wr_hit, board.wr_datetime 
+        FROM g5_write_board board, (SELECT @rownum:=(select count(*) FROM g5_write_board )+1) rownum_temp 
+        ORDER BY board.wr_id DESC
+    ) page LIMIT " . $paging_info['page_db'] . ", $item_row_count
 ";
 
 $result = mysqli_query($conn, $sql) or exit(mysqli_error($conn));
@@ -102,17 +91,7 @@ $result = mysqli_query($conn, $sql) or exit(mysqli_error($conn));
                                 <th scope="col">조회</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <?php while ($row = $notice_check_result->fetch_array()) { ?>
-                            <tr class="notice" onclick="moveView(<?= $row['wr_id']; ?>);">
-                                <td>공지</td>
-                                <td style="text-align: left;"><?= $row['wr_subject']; ?></td>
-                                <td><?= $row['wr_name']; ?></td>
-                                <td><?= substr($row['wr_datetime'], 5, 5); ?></td>
-                                <td><?= $row['wr_hit']; ?></td>
-                            </tr>    
-                            <?php } ?>
-                            
+                        <tbody>                            
                             <?php while ($row = $result->fetch_array()) { ?>
                             <tr onclick="moveView(<?= $row['wr_id']; ?>);">
                                 <td><?= $row['num']; ?></td>
@@ -129,7 +108,7 @@ $result = mysqli_query($conn, $sql) or exit(mysqli_error($conn));
                 <div class="board_paging_w">
                     <ul class="board_paging_list">
                         <?php if ($paging_info['page_prev'] > 0) { ?>
-                        <li class="bpl_inner"><a href="./notice.php?page=<?= $paging_info['page_prev'] ?>" class="bpl_cont">&lt;</a></li>
+                        <li class="bpl_inner"><a href="./board1.php?page=<?= $paging_info['page_prev'] ?>" class="bpl_cont">&lt;</a></li>
                         <?php } ?>
 
                         <?php
@@ -138,14 +117,14 @@ $result = mysqli_query($conn, $sql) or exit(mysqli_error($conn));
                         ?>
                             <li class="bpl_inner paging_current"><a href="javascript:void(0);" class="bpl_cont"><?= $i ?></a></li>
                         <?php } else { ?>
-                            <li class="bpl_inner"><a href="./notice.php?page=<?= $i ?>" class="bpl_cont"><?= $i ?></a></li>
+                            <li class="bpl_inner"><a href="./board1.php?page=<?= $i ?>" class="bpl_cont"><?= $i ?></a></li>
                         <?php        
                             }
                         }
                         ?>
 
                         <?php if ($paging_info['page_next'] < $paging_info['page_total']) { ?>
-                        <li class="bpl_inner"><a href="./notice.php?page=<?= $paging_info['page_next'] ?>" class="bpl_cont">&gt;</a></li>
+                        <li class="bpl_inner"><a href="./board1.php?page=<?= $paging_info['page_next'] ?>" class="bpl_cont">&gt;</a></li>
                         <?php } ?>
                     </ul>
                 </div>
@@ -157,7 +136,6 @@ $result = mysqli_query($conn, $sql) or exit(mysqli_error($conn));
 
 
 <?php
-    $notice_check_result->free();
     $result->free();
     mysqli_close($conn);
     flush();
@@ -181,7 +159,7 @@ $result = mysqli_query($conn, $sql) or exit(mysqli_error($conn));
     $(window).resize(function() {   });
 
     function moveView(id) {
-        location.href = './notice-view.php?wr_id=' + id;
+        location.href = './board2-view.php?wr_id=' + id;
     }
 </script>
 
