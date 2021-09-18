@@ -165,7 +165,7 @@ if ($isFile > 0) {
                         if(count($img_data) > 0) {
                             for($i=0; $i<count($img_data); $i++) {
                                 $img = $img_data[$i];
-                                echo '<a href="http://www.dalgubeolmakchang.com/bbs/view_image.php?bo_table=board&amp;fn=' . $img['bf_file'] . '" target="_blank" class="view_image">';
+                                echo '<a href="http://www.dalgubeolmakchang.com/bbs/view_image.php?bo_table=download&amp;fn=' . $img['bf_file'] . '" target="_blank" class="view_image">';
                                 echo '<img src="http://www.dalgubeolmakchang.com/data/file/board/' . $img['bf_file'] . '" alt="' . $img['bf_source'] . '">';
                                 echo '</a>';
                             }
@@ -199,7 +199,6 @@ if ($isFile > 0) {
                         
                         <button type="button" class="btn_board_list" onclick="javascript: location.href='./board3.php'">목록</button>                        
                     </div>
-                    </p>
                 </div>
             </div>
 

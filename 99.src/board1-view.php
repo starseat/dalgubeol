@@ -204,7 +204,6 @@ if ($isFile > 0) {
                         
                         <button type="button" class="btn_board_list" onclick="javascript: location.href='./board1.php'">목록</button>                        
                     </div>
-                    </p>
                 </div>
             </div>
 

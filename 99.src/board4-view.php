@@ -18,7 +18,7 @@ if (!$is_access) {
     mysqli_close($conn);
     flush();
     //historyBack();
-    echo ('<meta http-equiv="refresh" content="0 url=./board3.php" />');
+    echo ('<meta http-equiv="refresh" content="0 url=./board4.php" />');
     exit;
 }
 
@@ -199,7 +199,6 @@ if ($isFile > 0) {
                         
                         <button type="button" class="btn_board_list" onclick="javascript: location.href='./board4.php'">목록</button>                        
                     </div>
-                    </p>
                 </div>
             </div>
 

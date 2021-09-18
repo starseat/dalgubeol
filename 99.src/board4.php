@@ -28,7 +28,7 @@ function getExt($filename) {
         </div>
 
         <!-- 탭버튼 -->
-        <div class="tab_btn_box_w"><!-- select 오픈시 select_open 추가 -->
+        <div class="tab_btn_box_w">
             <div class="btn_tab_inner">
                 <button class="btn_tab_cont" onclick="javascript: location.href='./board1.php'">
                     <span class="btn_tab_text">공지사항</span>
