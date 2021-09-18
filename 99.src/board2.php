@@ -145,19 +145,6 @@ $result = mysqli_query($conn, $sql) or exit(mysqli_error($conn));
 
 <!--#front-->
 <script type="text/javascript">
-    $(document).ready(function(){
-        // mainvisualSlick();
-
-        var mql = window.matchMedia("screen and (max-width: 720px)");
-        if (mql.matches) {
-            console.log("화면의 너비가 720px 보다 작습니다.");
-        } else {
-            console.log("화면의 너비가 720px 보다 큽니다.");
-        }
-    });
-
-    $(window).resize(function() {   });
-
     function moveView(id) {
         location.href = './board2-view.php?wr_id=' + id;
     }

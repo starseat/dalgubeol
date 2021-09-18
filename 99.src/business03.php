@@ -59,20 +59,4 @@
 
 <?php require_once('./fragment/footer.php'); ?>
 
-<!--#front-->
-<script type="text/javascript">
-    $(document).ready(function(){
-        // mainvisualSlick();
-
-        var mql = window.matchMedia("screen and (max-width: 720px)");
-        if (mql.matches) {
-            console.log("화면의 너비가 720px 보다 작습니다.");
-        } else {
-            console.log("화면의 너비가 720px 보다 큽니다.");
-        }
-    });
-
-    $(window).resize(function() {   });
-</script>
-
 <?php require_once('./fragment/tail.php'); ?>
