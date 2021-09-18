@@ -10,7 +10,7 @@ $(document).ready(function() {
     }
 });
 
-$(window).resize(function() { mainvisualSlick(); });
+$(window).resize(function() {});
 
 function tabAction() {
     $('.btn_tab_cont').click(function() {
