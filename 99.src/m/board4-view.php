@@ -1,5 +1,5 @@
 <?php require_once('./fragment/header.php'); ?>
-<?php include('./db_conn.php'); ?>
+<?php include('../db_conn.php'); ?>
 
 <?php
 
@@ -24,11 +24,11 @@ if (!$is_access) {
 
 
 // 조회수 처리
-$download_view_cookie_name = 'download_view_' . $wr_id;
-if (!isset($_COOKIE[$download_view_cookie_name]) || empty($_COOKIE[$download_view_cookie_name])) {
+$gallery_view_cookie_name = 'gallery_view_' . $wr_id;
+if (!isset($_COOKIE[$gallery_view_cookie_name]) || empty($_COOKIE[$gallery_view_cookie_name])) {
     $sql  = 'UPDATE g5_write_gallery set wr_hit = wr_hit + 1 WHERE wr_id = ' . $wr_id;
     $result = mysqli_query($conn, $sql) or exit(mysqli_error($conn));
-    // setcookie($download_view_cookie_name, 1, time() + (60 * 60 * 24), '/');  // 1 day
+    // setcookie($gallery_view_cookie_name, 1, time() + (60 * 60 * 24), '/');  // 1 day
 }
 
 $sql = "SELECT wr_subject, wr_link1, wr_link2, wr_hit, wr_name, wr_datetime, wr_last, wr_file, wr_option, wr_content FROM g5_write_gallery WHERE wr_id= $wr_id";
@@ -153,7 +153,7 @@ if ($isFile > 0) {
                         if(count($file_data) > 0) {
                             for($i=0; $i<count($file_data); $i++) {
                                 $file = $file_data[$i];
-                                echo '<a href="http://www.dalgubeolmakchang.com/bbs/download.php?bo_table=download&amp;wr_id=' . $wr_id . '&amp;no=0" class="view_file_download">';
+                                echo '<a href="http://www.dalgubeolmakchang.com/bbs/download.php?bo_table=gallery&amp;wr_id=' . $wr_id . '&amp;no=0" class="view_file_download">';
                                 echo '<img src="http://www.dalgubeolmakchang.com/skin/board/basic/img/icon_file.gif" alt="첨부파일: ' . $file['bf_source'] . '">';
                                 echo $file['bf_source'];
                                 echo '</a>';
@@ -176,7 +176,11 @@ if ($isFile > 0) {
                     <div class="board_text_box">
                         <?= $content; ?>
 
-                        <br><br><hr>
+                        <br>
+                        <?php if ( !isEmpty($data['wr_link1']) || !isEmpty($data['wr_link2']) ) { ?>
+                        <br><hr>
+                        <?php } ?>
+                        
                         <?php if (!isEmpty($data['wr_link1'])) { ?>
                             <br>
                             - link 1 : <a href="<?= $data['wr_link1']; ?>"><?= $data['wr_link1']; ?></a>
@@ -206,5 +210,12 @@ if ($isFile > 0) {
         </div>
     </div>
 </div>
+
+<?php
+    mysqli_close($conn);
+    flush();
+?>
+
+<?php require_once('./fragment/footer.php'); ?>
 
 <?php require_once('./fragment/tail.php'); ?>

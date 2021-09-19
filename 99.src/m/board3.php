@@ -127,7 +127,6 @@ $result = mysqli_query($conn, $sql) or exit(mysqli_error($conn));
 </div>
 
 <?php
-    $notice_check_result->free();
     $result->free();
     mysqli_close($conn);
     flush();

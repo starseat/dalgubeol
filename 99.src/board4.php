@@ -3,7 +3,7 @@
 <?php include('./db_conn.php'); ?>
 
 <?php
-function getExt($filename) {
+function getExt2($filename) {
     $fileinfo = pathinfo($filename);
     $ext = $fileinfo['extension'];
 
@@ -95,7 +95,7 @@ $result = mysqli_query($conn, $sql) or exit(mysqli_error($conn));
                                     <div class="mb_image_w">
                                         <div class="mb_image_inner">
                                             <?php
-                                            $file_ext = getExt($row['bf_file']);
+                                            $file_ext = getExt2($row['bf_file']);
                                             $thumb_name = str_replace('.' . $file_ext, '_174x124.' . $file_ext, $row['bf_file']);
                                             ?>
                                             <img src="http://www.dalgubeolmakchang.com/data/file/gallery/thumb-<?= $thumb_name; ?>" class="mb_image" alt="<?= $row['bf_source']; ?>" style="width: 100%;">

@@ -1,9 +1,9 @@
 <?php require_once('./fragment/header.php'); ?>
 
-<?php include('./db_conn.php'); ?>
+<?php include('../db_conn.php'); ?>
 
 <?php
-function getExt($filename) {
+function getExt2($filename) {
     $fileinfo = pathinfo($filename);
     $ext = $fileinfo['extension'];
 
@@ -26,25 +26,6 @@ function getExt($filename) {
                 </span>
             </div>
         </div>
-
-        <!-- 탭버튼 -->
-        <div class="tab_btn_box_w">
-            <div class="btn_tab_inner">
-                <button class="btn_tab_cont" onclick="javascript: location.href='./board1.php'">
-                    <span class="btn_tab_text">공지사항</span>
-                </button>
-                <button class="btn_tab_cont" onclick="javascript: location.href='./board2.php'">
-                    <span class="btn_tab_text">원산지 정보</span>
-                </button>
-                <button class="btn_tab_cont" onclick="javascript: location.href='./board3.php'">
-                    <span class="btn_tab_text">성적서<br/>다운로드</span>
-                </button>
-                <button class="btn_tab_cont tab_current">
-                    <span class="btn_tab_text">갤러리</span>
-                </button>
-            </div>
-        </div>
-    </div>
 
 <?php
 // 게시글 수
@@ -145,11 +126,6 @@ $result = mysqli_query($conn, $sql) or exit(mysqli_error($conn));
     </div>
 </div>
 
-<?php
-    $result->free();
-    mysqli_close($conn);
-    flush();
-?>
 
 <?php require_once('./fragment/footer.php'); ?>
 

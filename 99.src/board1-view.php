@@ -180,7 +180,10 @@ if ($isFile > 0) {
                     <div class="board_text_box">
                         <?= $content; ?>
 
-                        <br><br><hr>
+                        <br>
+                        <?php if ( !isEmpty($data['wr_link1']) || !isEmpty($data['wr_link2']) ) { ?>
+                        <br><hr>
+                        <?php } ?>
                         <?php if (!isEmpty($data['wr_link1'])) { ?>
                             <br>
                             - link 1 : <a href="<?= $data['wr_link1']; ?>"><?= $data['wr_link1']; ?></a>
@@ -210,5 +213,12 @@ if ($isFile > 0) {
         </div>
     </div>
 </div>
+
+<?php
+    mysqli_close($conn);
+    flush();
+?>
+
+<?php require_once('./fragment/footer.php'); ?>
 
 <?php require_once('./fragment/tail.php'); ?>
