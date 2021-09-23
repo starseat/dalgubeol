@@ -7,15 +7,17 @@
         <div class="sub_big_title_w">
             <div class="product_title_w">
                 <div class="product_title_top">
-                    <strong class="product_title_cont">
-                        <img src="./public/imgs/pc/img_makchang.png" alt="" class="product_image">
-                        냄새가 적고<br/>기름기는 쫙 빼 담백한 맛,<br/>좋은 식감만 남겼습니다.
-                    </strong>
+                    <img src="./public/imgs/pc/img_makchang.png" alt="" class="product_image">
+                    <span class="product_title_cont">
+                        <strong class="txt_bold">냄새</strong>가 적고<br />
+                        기름기는 쫙 빼 담백한 맛,<br />
+                        좋은 <strong class="txt_bold">식감</strong>만 남겼습니다.
+                    </span>
                 </div>
                 <div class="product_title_bottom">
                     <p class="product_title_cont">
-                        키위와 파인애플로 숙성하여 육질이 부드럽습니다.<br/>
-                        막장소스가 포함되어 있으며,<br/>
+                        키위와 파인애플로 숙성하여 육질이 부드럽습니다.<br />
+                        막장소스가 포함되어 있으며,<br />
                         언제 어디서든 쉽게 취식할 수 있습니다.
                     </p>
                 </div>
@@ -67,7 +69,7 @@
                                 </a>
                             </li>
                             <li class="osl_inner">
-                                <a href="http://search.tmon.co.kr/search/?keyword=%EB%8B%AC%EA%B5%AC%EB%B2%8C%EB%A7%89%EC%B0%BD&thr=hs"target="_blank" class="osl_cont">
+                                <a href="http://search.tmon.co.kr/search/?keyword=%EB%8B%AC%EA%B5%AC%EB%B2%8C%EB%A7%89%EC%B0%BD&thr=hs" target="_blank" class="osl_cont">
                                     <img src="./public/imgs/pc/partners/logo_tmon.jpg" alt="티몬">
                                 </a>
                             </li>

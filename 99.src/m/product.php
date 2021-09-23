@@ -7,14 +7,16 @@
         <div class="sub_big_title_w">
             <div class="product_title_w">
                 <div class="product_title_top">
-                    <strong class="product_title_cont">
-                        <img src="../public/imgs/m/img_makchang.png" alt="" class="product_image">
-                        냄새가 적고<br/>기름기는 쫙 빼 담백한 맛,<br/>좋은 식감만 남겼습니다.
-                    </strong>
+                    <img src="../public/imgs/m/img_makchang.png" alt="" class="product_image">
+                    <span class="product_title_cont">
+                        <strong class="txt_bold">냄새</strong>가 적고<br />
+                        기름기는 쫙 빼 담백한 맛,<br />
+                        좋은 <strong class="txt_bold">식감</strong>만 남겼습니다.
+                    </span>
                 </div>
                 <div class="product_title_bottom">
                     <p class="product_title_cont">
-                        육질이 부드럽고, 막장소스가 포함되어<br/>
+                        육질이 부드럽고, 막장소스가 포함되어<br />
                         언제 어디서든 쉽게 취식할 수 있습니다.
                     </p>
                 </div>
@@ -32,31 +34,31 @@
                         <li class="bar_list_cont">
                             <strong class="bar_list_title">고급원료육</strong>
                             <span class="bar_list_text">
-                                원료육을 직수입하는 유통회사의 직영 공장으로<br/>
-                                중간 과정 없이 직접 원료육을 공급받아 신선하고 품질이 우수한<br/>
+                                원료육을 직수입하는 유통회사의 직영 공장으로<br />
+                                중간 과정 없이 직접 원료육을 공급받아 신선하고 품질이 우수한<br />
                                 원료로 제품을 만들고 있습니다.
                             </span>
                         </li>
                         <li class="bar_list_cont">
                             <strong class="bar_list_title">과일숙성</strong>
                             <span class="bar_list_text">
-                                차별화된 숙성기법으로 육질이 부드럽고<br/>
-                                씹는 식감이 일품이며, 과일(키위, 파인애플)을 직접 갈아 넣어<br/>
+                                차별화된 숙성기법으로 육질이 부드럽고<br />
+                                씹는 식감이 일품이며, 과일(키위, 파인애플)을 직접 갈아 넣어<br />
                                 소비자들이 안심하고 드실 수 있습니다.
                             </span>
                         </li>
                         <li class="bar_list_cont">
                             <strong class="bar_list_title">초벌훈제 잡냄새 OUT!</strong>
                             <span class="bar_list_text">
-                                달구벌만의 훈제 초벌 구이 방식으로<br/>
-                                잡냄새를 줄이고, 요리시간을 단축하여 소비자들이 언제<br/>
+                                달구벌만의 훈제 초벌 구이 방식으로<br />
+                                잡냄새를 줄이고, 요리시간을 단축하여 소비자들이 언제<br />
                                 어디서나 쉽고 간편하게 막창을 즐길 수 있습니다.
                             </span>
                         </li>
                         <li class="bar_list_cont">
                             <strong class="bar_list_title">막장 소스로 퀄리티 UP!</strong>
                             <span class="bar_list_text">
-                                달구벌만의 비법으로 완성된 된장 베이스의 특제소스로<br/>
+                                달구벌만의 비법으로 완성된 된장 베이스의 특제소스로<br />
                                 막창을 더 특별하게 즐길 수 있습니다.
                             </span>
                         </li>
@@ -75,7 +77,7 @@
                             </a>
                         </li>
                         <li class="osl_inner">
-                            <a href="http://search.tmon.co.kr/search/?keyword=%EB%8B%AC%EA%B5%AC%EB%B2%8C%EB%A7%89%EC%B0%BD&thr=hs"target="_blank" class="osl_cont">
+                            <a href="http://search.tmon.co.kr/search/?keyword=%EB%8B%AC%EA%B5%AC%EB%B2%8C%EB%A7%89%EC%B0%BD&thr=hs" target="_blank" class="osl_cont">
                                 <img src="../public/imgs/m/partners/logo_tmon.jpg" alt="티몬">
                             </a>
                         </li>
