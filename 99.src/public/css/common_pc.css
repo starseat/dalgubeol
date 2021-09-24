@@ -399,6 +399,7 @@ select {
 }
 
 .mb_image_inner {}
+.mb_image_inner img { width: 100%; }
 
 .module_box_w_type1 .mb_image_w {
     overflow: visible;
