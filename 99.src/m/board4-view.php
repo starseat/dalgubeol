@@ -147,63 +147,64 @@ if ($isFile > 0) {
                             </ul>
                         </div>
                     </div>
-                    <br>
-                    <div class="board_file_box">
-                        <?php
-                        if(count($file_data) > 0) {
-                            for($i=0; $i<count($file_data); $i++) {
-                                $file = $file_data[$i];
-                                echo '<a href="http://www.dalgubeolmakchang.com/bbs/download.php?bo_table=gallery&amp;wr_id=' . $wr_id . '&amp;no=0" class="view_file_download">';
-                                echo '<img src="http://www.dalgubeolmakchang.com/skin/board/basic/img/icon_file.gif" alt="첨부파일: ' . $file['bf_source'] . '">';
-                                echo $file['bf_source'];
-                                echo '</a>';
+                    <div class="board_box_w">
+                        <div class="board_file_box">
+                            <?php
+                            if(count($file_data) > 0) {
+                                for($i=0; $i<count($file_data); $i++) {
+                                    $file = $file_data[$i];
+                                    echo '<a href="http://www.dalgubeolmakchang.com/bbs/download.php?bo_table=gallery&amp;wr_id=' . $wr_id . '&amp;no=0" class="view_file_download">';
+                                    echo '<img src="http://www.dalgubeolmakchang.com/skin/board/basic/img/icon_file.gif" alt="첨부파일: ' . $file['bf_source'] . '">';
+                                    echo $file['bf_source'];
+                                    echo '</a>';
+                                }
                             }
-                        }
-                        ?>
-                    </div>
-                    <div class="board_img_box">
-                        <?php
-                        if(count($img_data) > 0) {
-                            for($i=0; $i<count($img_data); $i++) {
-                                $img = $img_data[$i];
-                                echo '<a href="http://www.dalgubeolmakchang.com/bbs/view_image.php?bo_table=gallery&amp;fn=' . $img['bf_file'] . '" target="_blank" class="view_image">';
-                                echo '<img src="http://www.dalgubeolmakchang.com/data/file/gallery/' . $img['bf_file'] . '" alt="' . $img['bf_source'] . '">';
-                                echo '</a>';
+                            ?>
+                        </div>
+                        <div class="board_img_box">
+                            <?php
+                            if(count($img_data) > 0) {
+                                for($i=0; $i<count($img_data); $i++) {
+                                    $img = $img_data[$i];
+                                    echo '<a href="http://www.dalgubeolmakchang.com/bbs/view_image.php?bo_table=gallery&amp;fn=' . $img['bf_file'] . '" target="_blank" class="view_image">';
+                                    echo '<img src="http://www.dalgubeolmakchang.com/data/file/gallery/' . $img['bf_file'] . '" alt="' . $img['bf_source'] . '">';
+                                    echo '</a>';
+                                }
                             }
-                        }
-                        ?>
-                    </div>
-                    <div class="board_text_box">
-                        <?= $content; ?>
+                            ?>
+                        </div>
+                        <div class="board_text_box">
+                            <?= $content; ?>
 
+                            <br>
+                            <?php if ( !isEmpty($data['wr_link1']) || !isEmpty($data['wr_link2']) ) { ?>
+                            <br><hr>
+                            <?php } ?>
+                            
+                            <?php if (!isEmpty($data['wr_link1'])) { ?>
+                                <br>
+                                - link 1 : <a href="<?= $data['wr_link1']; ?>"><?= $data['wr_link1']; ?></a>
+                            <?php } ?>
+
+                            <?php if (!isEmpty($data['wr_link2'])) { ?>
+                                <br>
+                                - link 2 : <a href="<?= $data['wr_link2']; ?>"><?= $data['wr_link2']; ?></a>
+                            <?php } ?>
+
+                        </div>
                         <br>
-                        <?php if ( !isEmpty($data['wr_link1']) || !isEmpty($data['wr_link2']) ) { ?>
-                        <br><hr>
-                        <?php } ?>
-                        
-                        <?php if (!isEmpty($data['wr_link1'])) { ?>
-                            <br>
-                            - link 1 : <a href="<?= $data['wr_link1']; ?>"><?= $data['wr_link1']; ?></a>
-                        <?php } ?>
-
-                        <?php if (!isEmpty($data['wr_link2'])) { ?>
-                            <br>
-                            - link 2 : <a href="<?= $data['wr_link2']; ?>"><?= $data['wr_link2']; ?></a>
-                        <?php } ?>
-
-                    </div>
-                    <br>
-                    <div class="board_btn_action">
-                        <?php if($prevId > 0) { ?>
-                        <button type="button" class="btn_board_prev" onclick="javascript: location.href='./board4-view.php?wr_id=<?= $prevId; ?>'">이전글</button>
-                        <?php } ?>
-                        
-                        <?php if($nextId > 0) { ?>
-                        <button type="button" class="btn_board_next" onclick="javascript: location.href='./board4-view.php?wr_id=<?= $nextId; ?>'">다음글</button>
-                        <?php } ?>
-                        
-                        <button type="button" class="btn_board_list" onclick="javascript: location.href='./board4.php'">목록</button>                        
-                    </div>
+                        <div class="board_btn_action">
+                            <?php if($prevId > 0) { ?>
+                            <button type="button" class="btn_board_prev" onclick="javascript: location.href='./board4-view.php?wr_id=<?= $prevId; ?>'">이전글</button>
+                            <?php } ?>
+                            
+                            <?php if($nextId > 0) { ?>
+                            <button type="button" class="btn_board_next" onclick="javascript: location.href='./board4-view.php?wr_id=<?= $nextId; ?>'">다음글</button>
+                            <?php } ?>
+                            
+                            <button type="button" class="btn_board_list" onclick="javascript: location.href='./board4.php'">목록</button>                        
+                        </div>
+                    </div> <!-- .board_box_w -->
                 </div>
             </div>
 
