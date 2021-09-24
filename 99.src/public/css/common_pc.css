@@ -220,6 +220,8 @@ input,button,select {outline:none; border-radius:0;}
 
 /* 서브 : 회사소개 - 연혁 */
 .company_map_w {display:table; table-layout:fixed; padding:73px 0 89px; overflow:hidden;}
+.root_daum_roughmap {width:100% !important;}
+.root_daum_roughmap .wrap_map {height:310px !important;}
 .map_box {float:left; width:554px; height:310px; background-color:#fff;}
 .map_text_w {float:left; padding:20px 0 0 135px; color:#fff; font-size:22px;}
 .map_text_w .content_title {font-size:35px; color:#fff;}
@@ -278,8 +280,24 @@ input,button,select {outline:none; border-radius:0;}
 .notice td,
 .board_table_w tr:hover td {background-color:#F4F4F4; cursor:pointer;}
 
+/* 서브 : 게시판 */
+.gallery_list_w .mb_image_w {padding-bottom:71.1%; overflow:hidden;}
+
 /* 서브 : 게시판 상세 */
+.board_view_title_w,
+.download_view_title_w {margin-top:20px; padding:20px; border:1px solid #707070; border-width:1px 0; background-color:#F4F4F4;}
+.board_view_title{font-size:18px;}
+.board_info_w {margin-top:10px; font-size:14px;}
+.board_info_text {display:inline-block; padding:0 5px 0 8px; position:relative;}
+.board_info_text:after {display:block; content:''; position:Absolute; left:0; top:3px; width:1px; height:12px; background-color:#707070;}
+.board_info_text:first-child {padding-left:0;}
+.board_info_text:first-child:after {display:none;}
+.board_table_view_w {}
+.board_text_box {line-height:26px;}
+.board_text_box a:hover,
+.board_file_box a:hover {font-weight:700; text-decoration:underline;}
 .board_img_box img { width: 100%; }
+.view_file_download img {display:inline-block; margin-right:10px;}
 
 /* 서브 : 게시판 페이징 */
 .board_paging_w {margin-top:50px;}
@@ -290,7 +308,7 @@ input,button,select {outline:none; border-radius:0;}
 .bpl_cont:hover {background-color:#D2101B; color:#fff;}
 .board_view_w {padding:20px 15px; text-align:left;}
 .board_btn_action {display:block; overflow:hidden; margin-bottom:30px;}
-[class^="btn_board_"] {float:left; margin-right:7px; padding:3px 5px; font-size:12px; text-align:center; background-color:#F4F4F4; border:1px solid #707070; color:#707070;}
+[class^="btn_board_"] {float:left; margin-right:7px; padding:3px 5px; font-size:12px; text-align:center; background-color:#F4F4F4; border:1px solid #707070; color:#352F2D;}
 
 /* 서브 : 제품안내 - 상세 */
 .detail_view_w {padding:42px 0 90px;}
