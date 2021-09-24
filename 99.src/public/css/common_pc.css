@@ -1177,6 +1177,16 @@ select {
 }
 
 
+/* 서브 : 게시판 상세 */
+.board_table_view_w {padding:0 40px;}
+.board_view_title_w{}
+.board_view_title {display:block; margin-top:14px; padding-top:8px; border-top:1px solid #352F2D; font-size:13px;}
+.board_info_w {margin-top:6px; font-size:12px;}
+.board_info_list {}
+.board_info_cont {display:inline-block;}
+.board_text_box {margin-top:20px; padding:14px 10px 17px; background-color:#F4F4F4; font-size:12px; line-height:22px;}
+.board_img_box img { width: 100%; }
+
 /* 서브 : 게시판 페이징 */
 
 .board_paging_w {

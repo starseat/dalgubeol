@@ -316,7 +316,7 @@ input,button,select {outline:none; border-radius:0;}
 .board_info_list {}
 .board_info_cont {display:inline-block;}
 .board_text_box {margin-top:20px; padding:14px 10px 17px; background-color:#F4F4F4; font-size:12px; line-height:22px;}
-
+.board_img_box img { width: 100%; }
 
 
 /* 서브 : 게시판 페이징 */
