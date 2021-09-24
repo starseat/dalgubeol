@@ -7,8 +7,8 @@
         <div class="sub_big_title_w">
             <div class="product_title_w">
                 <div class="product_title_top">
-                    <img src="./public/imgs/pc/img_makchang.png" alt="" class="product_image">
                     <span class="product_title_cont">
+                        <img src="./public/imgs/pc/img_makchang.png" alt="" class="product_image">
                         <strong class="txt_bold">냄새</strong>가 적고<br />
                         기름기는 쫙 빼 담백한 맛,<br />
                         좋은 <strong class="txt_bold">식감</strong>만 남겼습니다.
