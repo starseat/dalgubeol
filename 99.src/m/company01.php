@@ -206,7 +206,7 @@
 
 <script>
     $(document).ready(function() {
-        listSlick();
+        listSlick('m');
     });
 </script>
 

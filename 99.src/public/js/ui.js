@@ -33,13 +33,24 @@ function mainvisualSlick() {
 
 
 
-function listSlick() {
-    $('.slick_slide_list').slick({
-        dots: false,
-        arrows: true,
-        infinite: true,
-        speed: 300,
-        slidesToShow: 4,
-        slidesToScroll: 4
-    });
+function listSlick(devMode) {
+    if (devMode && devMode == 'm') {
+        $('.slick_slide_list').slick({
+            dots: false,
+            arrows: true,
+            infinite: true,
+            speed: 300,
+            slidesToShow: 2,
+            slidesToScroll: 2
+        });
+    } else {
+        $('.slick_slide_list').slick({
+            dots: false,
+            arrows: true,
+            infinite: true,
+            speed: 300,
+            slidesToShow: 4,
+            slidesToScroll: 4
+        });
+    }
 }
