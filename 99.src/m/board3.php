@@ -28,7 +28,7 @@
                     <span class="btn_tab_text">원산지 정보</span>
                 </button>
                 <button class="btn_tab_cont tab_current">
-                    <span class="btn_tab_text">성적서<br/>다운로드</span>
+                    <span class="btn_tab_text">성적서</span>
                 </button>
                 <button class="btn_tab_cont" onclick="javascript: location.href='./board4.php'">
                     <span class="btn_tab_text">갤러리</span>
